@@ -1,0 +1,142 @@
+/* @import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  --prapery: #2D2D2D;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@theme inline {
+  --color-background: "#121212"
+}
+
+@layer utilities {
+  .bg-custom-black {background-color: var(--color-ba);}
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+} */
+
+
+
+
+@import "tailwindcss";
+
+@theme inline {
+  /* ---------- Light Mode ---------- */
+  --color-background: #ffffff;
+  --color-foreground: #171717;
+  --color-primary: #0d3b66;
+  --color-lightPrimary: #e6edf5;
+  --color-dark: #2D2D2D;
+  --color-white: #ffffff;
+  --color-lightGray: #F2F2F2;
+  --color-gray: #666666;
+  --color-border: #DCDCDC;
+  --color-red: #ff5555;
+  --color-lightRed: #ffecec;
+  --color-secondary: #ff7f11;
+  --color-success: #008c78;
+  --color-lightGreen: #ccf2ed;
+  --color-sunBackground: #ffdf9b;
+  --color-yellow: #EBE719;
+  --color-lightYellow: #fff6e0;
+}
+
+/* ---------- Dark Mode ---------- */
+.dark {
+  --color-background: #121212;
+  --color-foreground: #e0e0e0;
+  --color-primary: #313fbd;
+  --color-lightPrimary: #2a3a4d;
+  --color-dark: #bfc1cc;
+  --color-white: #9292a1;
+  --color-lightGray: #606067;
+  --color-gray: #666666;
+  --color-border: #3a3a3a;
+  --color-red: #ff6b6b;
+  --color-lightRed: #331111;
+  --color-secondary: #ff9933;
+  --color-success: #00bfa5;
+  --color-lightGreen: #225544;
+  --color-sunBackground: #665522;
+  --color-yellow: #ffca28;
+  --color-lightYellow: #332200;
+}
+
+/* ---------- Body ---------- */
+/* body {
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  font-family: Arial, Helvetica, sans-serif;
+} */
+
+/* ---------- Tailwind Utilities based on variables ---------- */
+@layer utilities {
+  /* Backgrounds */
+  .bg-primary { background-color: var(--color-primary); }
+  .bg-background { background-color: var(--color-background); }
+  .bg-lightPrimary { background-color: var(--color-lightPrimary); }
+  .bg-dark { background-color: var(--color-dark); }
+  .bg-white { background-color: var(--color-white); }
+  .bg-gray { background-color: var(--color-gray); }
+  .bg-lightGray { background-color: var(--color-lightGray); }
+  .bg-red { background-color: var(--color-red); }
+  .bg-lightRed { background-color: var(--color-lightRed); }
+  .bg-secondary { background-color: var(--color-secondary); }
+  .bg-success { background-color: var(--color-success); }
+
+  /* Texts */
+  .text-primary { color: var(--color-primary); }
+  .text-foreground { color: var(--color-foreground); }
+  .text-lightPrimary { color: var(--color-lightPrimary); }
+  .text-dark { color: var(--color-dark); }
+  .text-white { color: var(--color-white); }
+  .text-gray { color: var(--color-gray); }
+  .text-lightGray { color: var(--color-lightGray); }
+  .text-red { color: var(--color-red); }
+  .text-lightRed { color: var(--color-lightRed); }
+  .text-secondary { color: var(--color-secondary); }
+  .text-success { color: var(--color-success); }
+
+  /* Borders */
+  .border-primary { border-color: var(--color-primary); }
+  .border-foreground { border-color: var(--color-foreground); }
+  .border-gray { border-color: var(--color-gray); }
+}
+
+@layer components {
+  .features {
+    @apply  text-right text-2xl font-bold flex gap-2 items-center justify-end;
+    color: var(--color-primary);
+  }
+  .featuresP {
+    @apply text-gray text-right text-[16px] mt-3;
+  }
+
+  .slide {
+   
+    @apply absolute top-1/2 -translate-y-1/2 rounded-full w-14 h-14 flex items-center justify-center shadow;
+    background-color: var(--color-primary);
+  }
+}
+
+@theme {
+  --breakpoint-881px: 881px;
+}
+
+html {
+  scroll-behavior: smooth;
+  transition: 1s;
+}
