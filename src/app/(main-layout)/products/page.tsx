@@ -3,7 +3,7 @@ import { getFiltersDataHandler, getProductServeFn } from "@/utils/services/api";
 import { FC } from "react";
 
 export interface TProductPageSearchParams {
-  searchParams: {
+  searchParams: Promise<{
     PageNumber: string;
     RowsOfPage: string;
     Query: string;
@@ -12,7 +12,7 @@ export interface TProductPageSearchParams {
     LssuingCountryId: string;
     minPrice: string;
     maxPrice: string;
-  };
+  }>;
 }
 
 export const metadata = {

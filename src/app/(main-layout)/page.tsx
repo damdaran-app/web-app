@@ -21,7 +21,7 @@ import herouImage1 from "../../assets/photos/herou-image1.jpg";
 import { getCoords } from "@/utils/services/api/get/getCoords";
 
 interface TProps {
-  searchParams: TProductsApiParams;
+  searchParams: Promise<TProductsApiParams>;
 }
 
 export const metadata = {
@@ -30,6 +30,16 @@ export const metadata = {
 };
 
 const HomePage = async ({ searchParams }: TProps) => {
+  const {
+    PageNumber,
+    LssuingCountryId,
+    ProductQuality,
+    ProductTypeId,
+    Query,
+    RowsOfPage,
+    maxPrice,
+    minPrice,
+  } = await searchParams;
   const reportData = await getLandingReport("/getLandingReport");
   const newsData = await getNewsLists("/getNewsLists", {
     TypeId: null,
@@ -43,15 +53,23 @@ const HomePage = async ({ searchParams }: TProps) => {
   );
 
   const productTypeDataList = await getProductTypeList("/getProductTypeLists");
-  const productDataList = await getProductList(
-    "/getProductLists",
-    searchParams,
+  const productDataList = await getProductList("/getProductLists", {
+    PageNumber,
+    LssuingCountryId,
+    ProductQuality,
+    ProductTypeId,
+    Query,
+    RowsOfPage,
+    maxPrice,
+    minPrice,
+  });
+
+  console.log("landing reportData ==>", reportData);
+
+  const coordsResponse = await getCoords(
+    "https://maps.app.goo.gl/TWg3bJPvCsDovpYx9",
   );
-
-  console.log("landing reportData ==>", reportData)
-
-  const coordsResponse = await getCoords("https://maps.app.goo.gl/TWg3bJPvCsDovpYx9")
-  console.log("coordsResponse ==>", coordsResponse)
+  console.log("coordsResponse ==>", coordsResponse);
 
   return (
     <div className="holder flex flex-col items-center">
@@ -105,10 +123,14 @@ const HomePage = async ({ searchParams }: TProps) => {
               <ContactInformationBax />
             </div>
             <div className="bottom rounded-2xl overflow-hidden mt-7">
-              {coordsResponse.lat && coordsResponse.lng ? <CustomMap
-                center={[coordsResponse.lat, coordsResponse.lng]}
-                className="h-[340px] w-full"
-              /> : <></>}
+              {coordsResponse.lat && coordsResponse.lng ? (
+                <CustomMap
+                  center={[coordsResponse.lat, coordsResponse.lng]}
+                  className="h-[340px] w-full"
+                />
+              ) : (
+                <></>
+              )}
             </div>
           </div>
           <div className="left w-[40%] max-lg:w-[90%] max-lg:mt-8">
