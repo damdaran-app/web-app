@@ -65,11 +65,11 @@ const PageStaticItemsController: FC<IProps> = async ({ router, params }) => {
               {landingReport && response ? (
                 <CallingCard
                   time={changeTimeHandler(response?.data.createAt ?? "")}
-                  desc={landingReport?.data.aboutMeAndMyWork.aboutMe.title}
+                  desc={landingReport?.data?.aboutMeAndMyWork?.aboutMe.title ?? ""}
                   date={changeMomentHandler(response?.data.createAt ?? "")}
                   image=""
                   title={
-                    landingReport?.data.aboutMeAndMyWork.aboutMe.companyName
+                    landingReport?.data?.aboutMeAndMyWork?.aboutMe.companyName ?? ""
                   }
                   // phoneNumber={sellerInformationData.data.phoneNumber[0]}
                   phoneNumber={"09112800689"}
