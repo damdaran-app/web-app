@@ -103,28 +103,34 @@ export interface TQuestionsSectionCard {
   index?: number;
 }
 
+export interface GetDataResponse<T> {
+  success: boolean;
+  message: string;
+  data?: T
+}
+
 export interface TLandingReport {
-  data: {
-    headingText: {
+  // data: {
+    headingText?: {
       startTitle: string;
       clicheTitle: string;
       endTitle: string;
       description: string;
     };
-    aboutProducts: {
+    aboutProducts?: {
       title: string;
       descrption: string;
       products: [{ title: string; description: string }];
     };
-    singleQuestion: {
+    singleQuestion?: {
       question: string;
       answerToTheQuestion: string;
     };
-    ourPositivePoints: {
+    ourPositivePoints?: {
       title: string;
       tips: [{ tipsTitle: string; tipsDescription: string }];
     };
-    aboutMeAndMyWork: {
+    aboutMeAndMyWork?: {
       aboutMe: {
         title: string;
         companyName: string;
@@ -136,10 +142,10 @@ export interface TLandingReport {
         authenticBrand: string;
       };
     };
-    frequentlyAskedQuestions: [
+    frequentlyAskedQuestions?: [
       { question: string; answerToTheQuestion: string },
     ];
-  };
+  // };
 }
 
 export interface TSectionFrequentlyAskedQuestions {

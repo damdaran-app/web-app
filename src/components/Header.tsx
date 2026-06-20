@@ -79,14 +79,14 @@ const Header: FC<TProps> = ({ data }) => {
                     <h1
                       className={`text-white text-[29px] font-bold ${samim.className}`}
                     >
-                      {data?.data?.headingText?.startTitle}
+                      {data?.headingText?.startTitle}
                       <span className="text-yellow-400">
-                        {data?.data?.headingText?.clicheTitle}{" "}
+                        {data?.headingText?.clicheTitle}{" "}
                       </span>
-                      {data?.data?.headingText?.endTitle}
+                      {data?.headingText?.endTitle}
                     </h1>
                     <h2 className="text-white text-[18px] mt-4 max-881px:leading-10">
-                      {data?.data?.headingText?.description}
+                      {data?.headingText?.description}
                     </h2>
                     <CustomBtn
                       text="تماس برای مشاوره رایگان !"

@@ -1,15 +1,15 @@
 "use client";
-
 import Lottie from "lottie-react";
 import { FC } from "react";
 import NoInternetAnimation from "../../animation/No internet connection.json";
+import { samim } from "@/components/fonts";
 
 interface TProps {
   error: Error & { digest?: string };
   reset: () => void;
 }
 
-const MainPagesError: FC<TProps> = () => {
+const MainPagesError: FC<TProps> = ({ reset, error }) => {
   return (
     <div className="w-full h-screen bg-transparent flex flex-col items-center">
       <Lottie
@@ -19,9 +19,15 @@ const MainPagesError: FC<TProps> = () => {
         color="white"
       />
       <h1 className="text-red-500 text-center text-2xl underline max-sm:text-lg max-sm:-mt-10">
-        لطفا اینترنت سیستم خود را چک کنید
+       {`اوه مشکلی پیش اومده، لطفا صفحه رو مجدد لود کنید`}
       </h1>
-      {/* <button className="border-orange-500 text-white px-6 p-4" onClick={reset}>Reload...</button> */}
+      <button
+        className={`bg-black text-white px-8 py-2.5 text-xl cursor-pointer mt-5
+          rounded-2xl transition-all hover:scale-110 ${samim.className}`}
+        onClick={() => window.location.reload()}
+      >
+        صفحه را رفرش کنید...
+      </button>
     </div>
   );
 };

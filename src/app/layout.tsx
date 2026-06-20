@@ -27,9 +27,9 @@ export default function RootLayout({
       >
         <div className="holder-container min-[1550px]:w-[1500px] m-auto">
           <ProviderApp>
-            <UserNetworkController>
+            {/* <UserNetworkController> */}
               <HeaderWrapper />
-            </UserNetworkController>
+            {/* </UserNetworkController> */}
             <div className="holder px-10 max-lg:px-0">
               {children}
             </div>

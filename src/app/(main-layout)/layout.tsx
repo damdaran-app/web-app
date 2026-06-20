@@ -9,8 +9,8 @@ interface TProps {
 const MainLayout: FC<TProps> = ({ children }) => {
   return (
     <>
-      {children}
       <UserNetworkController>
+        {children}
         <Footer />ّ
       </UserNetworkController>
     </>
